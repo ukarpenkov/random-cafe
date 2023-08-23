@@ -1,14 +1,30 @@
 <script>
-// import axios from "axios";
+import axios from "axios";
 
-// // let data = axios.get(`https://bandaumnikov.ru/api/test/site/get-index`);
-console.log("data");
-let a = 5;
-console.log(a + 3);
+export default {
+  data() {
+    return {
+      restaurants: [],
+    };
+  },
+  methods: {
+    async fetchRestaurant() {
+      try {
+        const response = await axios.get(`https://bandaumnikov.ru/api/test/site/get-index`);
+        this.restaurants = response.data.data;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+  },
+  mounted() {
+    this.fetchRestaurant();
+  },
+};
 </script>
 
 <template>
-  <div>Тест</div>
+  <div v-if="restaurants" v-for="restaurant in restaurants">{{ restaurant.name }}</div>
 </template>
 
 <style></style>
