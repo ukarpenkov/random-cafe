@@ -20,11 +20,17 @@ export default {
   mounted() {
     this.fetchRestaurant();
   },
+  compatConfig: { MODE: 3 },
 };
 </script>
 
 <template>
-  <div v-if="restaurants" v-for="restaurant in restaurants">{{ restaurant.name }}</div>
+  <div>
+    <b-button>Button</b-button>
+    <b-button variant="danger">Button</b-button>
+    <b-button variant="success">Button</b-button>
+    <b-button variant="outline-primary">Button</b-button>
+  </div>
 </template>
 
 <style></style>
