@@ -1,13 +1,8 @@
 import { createApp } from 'vue';
-import App from './App.vue'
-import Vue from "vue";
-import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
+import Antd from 'ant-design-vue';
+import App from './App';
+import 'ant-design-vue/dist/reset.css';
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+const app = createApp(App);
 
-
-Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
-
-createApp(App).mount('#app');
+app.use(Antd).mount('#app');
