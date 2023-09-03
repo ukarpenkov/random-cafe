@@ -40,7 +40,7 @@ export default {
             <img
               v-else="restaurant.photo === ''"
               alt="example"
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              src="./images//default-cafe.jpg"
               :height="300"
             />
           </template>
