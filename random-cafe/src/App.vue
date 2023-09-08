@@ -23,7 +23,6 @@ export default {
         this.restaurants = response.data.data;
       } catch (e) {
         console.log(e);
-        console.log("t11t");
       }
     },
   },
