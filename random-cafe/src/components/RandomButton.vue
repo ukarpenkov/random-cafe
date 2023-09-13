@@ -40,10 +40,10 @@ export default {
       width="1500px"
       @ok="modal2Visible = false"
     >
+      <div class="shadow"></div>
       <div class="random">
-        <div class="result"></div>
         <div class="cards" v-for="restaurant in restaurants">
-          <a-card hoverable>
+          <a-card hoverable style="width: 240px">
             <template #cover>
               <img
                 v-if="restaurant.photo !== ''"
@@ -108,5 +108,21 @@ export default {
 .search-btn:hover {
   transform: rotate(360deg);
   transition: all 1.5s;
+}
+
+.random {
+  display: flex;
+  overflow: auto;
+  width: 1200px;
+}
+
+.cards {
+  height: 100%;
+  transition: 5s ease;
+}
+
+.ant-modal-body {
+  display: grid;
+  justify-items: center;
 }
 </style>
