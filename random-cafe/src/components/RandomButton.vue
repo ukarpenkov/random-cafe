@@ -2,9 +2,6 @@
 import axios from "axios";
 import { ref } from "vue";
 
-// var cards_block = document.querySelector(".cards");
-// var cards = document.querySelectorAll(".cards > div");
-
 export default {
   data() {
     return {
@@ -12,8 +9,17 @@ export default {
     };
   },
   methods: {
-    setModalVisible(open) {
-      this.modal2Visible.value = open;
+    setModalVisible() {
+      this.modal2Visible = true;
+      setTimeout(() => {
+        let random = Math.floor(Math.random() * 23);
+        this.$refs.cards.style.left = -random * 250 + "px";
+        setTimeout(() => {
+          random++;
+          this.$refs.card[random].style.background = "#7B90F7";
+          this.$refs.card[random].style.color = "white";
+        }, 2500);
+      }, 300);
     },
     async fetchRestaurant() {
       try {
@@ -22,18 +28,6 @@ export default {
       } catch (e) {
         console.log(e);
       }
-    },
-    start() {
-      let random = Math.floor(Math.random() * 20); // От 0 до 8
-      this.$refs.cards.style.left = -random * 200 + "px";
-
-      console.log(this.$refs.cards);
-      console.log(this.$refs.card[random]);
-      setTimeout(() => {
-        random++;
-        this.$refs.card[random].style.background = "#7B90F7";
-        this.$refs.card[random].style.color = "white";
-      }, 3000);
     },
   },
   mounted() {
@@ -44,15 +38,14 @@ export default {
 
 <template>
   <div id="components-modal-demo-position">
-    <a-button type="primary" shape="circle" class="search-btn" @click="modal2Visible = true">
+    <a-button type="primary" shape="circle" class="search-btn" @click="setModalVisible()">
       <span class="material-symbols-outlined dice"> casino </span>
     </a-button>
     <a-modal
       v-model:open="modal2Visible"
-      title="Vertically centered modal dialog"
       centered
       :footer="null"
-      width="1500px"
+      width="900px"
       @ok="modal2Visible = false"
     >
       <div class="shadow"></div>
@@ -73,12 +66,10 @@ export default {
                 class="card-image"
               />
             </div>
-
             <div>{{ restaurant.name }}</div>
           </div>
         </div>
       </div>
-      <button @click="start()">GHBB</button>
     </a-modal>
   </div>
 </template>
@@ -106,9 +97,6 @@ export default {
 }
 
 .random {
-  display: flex;
-  overflow: auto;
-  width: 1200px;
 }
 
 .cards {
@@ -130,11 +118,14 @@ export default {
   border-radius: 10px;
   border: 2px solid white;
   width: 800px;
-  height: 250px;
+  height: 351px;
   box-shadow: inset 0px 0px 20px 0px black;
 }
 
 .random {
+  display: flex;
+  overflow: auto;
+  width: 1200px;
   position: absolute;
   overflow: hidden;
   left: 50%;
@@ -142,7 +133,7 @@ export default {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   width: 800px;
-  height: 250px;
+  height: 345px;
   background: #161d31;
 }
 
@@ -156,8 +147,8 @@ export default {
 }
 
 .card-image {
-  height: 150px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
 }
 
 .card {
@@ -170,8 +161,8 @@ export default {
   font-size: 20px;
   margin-top: 5px;
   margin-left: 5px;
-  width: 200px;
-  height: 250px;
+  width: 250px;
+  height: 335px;
   color: #6a6a6a;
   background: white;
   border-radius: 10px;
