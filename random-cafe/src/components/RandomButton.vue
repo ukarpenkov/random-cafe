@@ -12,8 +12,9 @@ export default {
     setModalVisible() {
       this.modal2Visible = true;
       setTimeout(() => {
-        let random = Math.floor(Math.random() * 23);
-        this.$refs.cards.style.left = -random * 250 + "px";
+        let cardsCount = this.$refs.card.length;
+        let random = Math.floor(Math.random() * cardsCount);
+        this.$refs.cards.style.left = -random * 252 + "px";
         setTimeout(() => {
           random++;
           this.$refs.card[random].style.background = "#7B90F7";
@@ -96,17 +97,9 @@ export default {
   transition: all 1.5s;
 }
 
-.random {
-}
-
 .cards {
   height: 100%;
   transition: 2s ease;
-}
-
-:where(.css-dev-only-do-not-override-1ugq3w3).ant-modal .ant-modal-body {
-  display: grid;
-  justify-items: center;
 }
 
 .shadow {
@@ -117,7 +110,7 @@ export default {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   border: 2px solid white;
-  width: 800px;
+  width: 904px;
   height: 351px;
   box-shadow: inset 0px 0px 20px 0px black;
 }
@@ -125,14 +118,13 @@ export default {
 .random {
   display: flex;
   overflow: auto;
-  width: 1200px;
+  width: 900px;
   position: absolute;
   overflow: hidden;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  width: 800px;
   height: 345px;
   background: #161d31;
 }
