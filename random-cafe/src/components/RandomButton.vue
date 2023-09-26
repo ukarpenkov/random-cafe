@@ -13,13 +13,13 @@ export default {
       this.modal2Visible = true;
       setTimeout(() => {
         let cardsCount = this.$refs.card.length;
-        let random = Math.floor(Math.random() * cardsCount);
+        let random = Math.floor(Math.random() * cardsCount - 1);
         this.$refs.cards.style.left = -random * 252 + "px";
         setTimeout(() => {
           random++;
           this.$refs.card[random].style.background = "#7B90F7";
           this.$refs.card[random].style.color = "white";
-        }, 2500);
+        }, 3000);
       }, 300);
     },
     async fetchRestaurant() {
@@ -47,6 +47,7 @@ export default {
       centered
       :footer="null"
       width="900px"
+      closeIcon=" "
       @ok="modal2Visible = false"
     >
       <div class="shadow"></div>
@@ -67,7 +68,9 @@ export default {
                 class="card-image"
               />
             </div>
-            <div>{{ restaurant.name }}</div>
+            <div class="roulette__text">
+              <p>{{ restaurant.name }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -144,11 +147,13 @@ export default {
 }
 
 .card {
+  display: grid;
+  justify-items: center;
+  align-content: space-between;
   position: relative;
   justify-content: center;
   align-items: center;
   float: left;
-  font-family: sans-serif;
   font-weight: bold;
   font-size: 20px;
   margin-top: 5px;
@@ -160,6 +165,14 @@ export default {
   border-radius: 10px;
 }
 
+.roulette__text {
+  display: grid;
+  height: 100px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
 .result {
   position: absolute;
   z-index: 10;
@@ -169,5 +182,15 @@ export default {
   border: 10px solid transparent;
   border-top: 20px solid #425dd8;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 900px) {
+  .shadow {
+    width: 120%;
+  }
+
+  .random {
+    width: 219%;
+  }
 }
 </style>

@@ -81,4 +81,13 @@ export default {
 .card-attribute {
   font-weight: bold;
 }
+
+@media (max-width: 900px) {
+  .ant-col {
+    max-width: 500px;
+  }
+  .ant-card-cover {
+    width: 500px;
+  }
+}
 </style>

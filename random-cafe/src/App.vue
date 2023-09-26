@@ -28,9 +28,16 @@ export default {
 </script>
 
 <template>
-  <a-divider orientation="left">Vertical</a-divider>
+  <a-divider orientation="left">Random cafe</a-divider>
   <CafeCard />
   <RandomButton />
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 900px) {
+  .ant-row {
+    display: grid;
+    justify-items: center;
+  }
+}
+</style>
